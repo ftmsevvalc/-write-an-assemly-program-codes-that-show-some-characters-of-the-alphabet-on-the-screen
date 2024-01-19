@@ -1,0 +1,18 @@
+org 100h
+
+MOV CX, 26 ; for write  26 letter 
+MOV DL, 'A' ; DL registeri 'A' karakterinin ASCII kodu ile baslatmak icin
+
+loop_start:
+    MOV AH, 02h ; for wrtite next letter,  AH  = 02h
+    INT 21h ; print letter
+
+    ADD DL, 32 ;  to write lowercase    Dl=32
+    MOV AH, 02h ; for write next letter ,  AH  = 02h 
+    INT 21h ; print letter
+
+    INC DL ; for write next letter , increase the value of Dl
+    LOOP loop_start ; continues until 26 letters are written
+
+MOV AH, 4Ch ; for end program  
+INT 21h 
